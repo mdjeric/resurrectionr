@@ -5,7 +5,7 @@ Version: 0.0.0.9000
 Authors@R: as.person(c(
     "Milos Djeric <milos.djeric@gmail.com> [aut, cre]", 
     "Darren Sherkat <sherkat@siu.edu> [aut]",
-    "Derek Lehman <lehman@newuni.edu> [aut]"
+    "Derek Lehman <derekleheman@siu.edu> [aut]"
   ))
 Description: Function that recodes GSS family of variables for religious
     identification (base variables: relig, denom, and other; for
@@ -20,6 +20,6 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/mdjeric/resurrectionr
-BugReports: http://github.com/mdjeric/resurrectionr/issues
+BugReports: https://github.com/mdjeric/resurrectionr/issues
 RoxygenNote: 6.0.1
 Suggests: testthat
