@@ -1,0 +1,25 @@
+Package: resurrectionr
+Type: Package
+Title: Recoding of Religion in General Social Survey
+Version: 0.0.0.9000
+Authors@R: as.person(c(
+    "Milos Djeric <milos.djeric@gmail.com> [aut, cre]", 
+    "Darren Sherkat <sherkat@siu.edu> [aut]",
+    "Derek Lehman <lehman@newuni.edu> [aut]"
+  ))
+Description: Function that recodes GSS family of variables for religious
+    identification (base variables: relig, denom, and other; for
+    respondent, spouse, parents, etc.) into a 12 (and 7) level sociological
+    classification built by Sherkat and Lehman. Coding scheme avoids
+    conflation with politicized religious identities and facilitates
+    analyses of change over time. It automatically handels combination of
+    punches and levels, supplies classification key, and so on. See original
+    article, website, documentation, and examples for more details.
+Depends: R (>= 2.10)
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/mdjeric/resurrectionr
+BugReports: http://github.com/mdjeric/resurrectionr/issues
+RoxygenNote: 6.0.1
+Suggests: testthat

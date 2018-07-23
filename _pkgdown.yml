@@ -1,0 +1,23 @@
+authors:
+  Milos Djeric:
+    href: https://mdjeric.github.io
+  Darren Sherkat:
+    href: https://cola.siu.edu/sociology/faculty-staff/faculty/sherkat.php
+development:
+  mode: auto
+
+reference:
+- title: Main function
+  contents:
+  - '`recode_religion`'
+- title: Data
+  desc: Data from GSS 2014, imported in different ways (four variables) and codebook.
+  contents:
+  - '`gss14_f`'
+  - '`gss14_n`'
+  - '`rdo_cdbk`'
+- title: Some helpers
+  desc: These might be useful on their own.
+  contents:
+  - '`fct_rec_relig`'
+  - '`rdo_punches`'

@@ -1,0 +1,9 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^data-raw$
+^README\.Rmd$
+^README-.*\.png$
+^\.travis\.yml$
+^CONDUCT\.md$
+^LICENSE\.md$
+^_pkgdown\.yml$
