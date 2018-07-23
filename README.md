@@ -2,6 +2,9 @@
 resurrectionr <img src="man/figures/logo.png" align="right" />
 ==============================================================
 
+[![Travis-CI Build
+Status](https://travis-ci.org/mdjeric/resurrectionr.svg?branch=master)](https://travis-ci.org/mdjeric/resurrectionr)
+
 The purpose of resurrectionr is `recode_religion()` which recodes a set
 of religious identification variables from the US General Social Survey,
 in a way that is analytically useful and easy to implement in data

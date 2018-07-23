@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 
 # resurrectionr <img src="man/figures/logo.png" align="right" />
 
+[![Travis-CI Build Status](https://travis-ci.org/mdjeric/resurrectionr.svg?branch=master)](https://travis-ci.org/mdjeric/resurrectionr)
+
 The purpose of resurrectionr is `recode_religion()` which recodes a set of religious identification variables from the US General Social Survey, in a way that is analytically useful and easy to implement in data processing.    
 
 Bigger sociological and political problems in recoding of religious identification are elaborated and resolved with a recoding schema in the paper by Darren E. Sherkat and Derek Lehman,[^1] based on classification[^2] from 2001. This package provides solutions for main technical issues with recoding of religious identification from GSS in R, using said schema.    
