@@ -9,7 +9,7 @@ Authors@R: as.person(c(
   ))
 Description: Function that recodes GSS family of variables for religious
     identification (base variables: relig, denom, and other; for
-    respondent, spouse, parents, etc.) into a 12 (and 7) level sociological
+    respondent, spouse, parents, etc.) into a 7 (and 12) level sociological
     classification built by Sherkat and Lehman. Coding scheme avoids
     conflation with politicized religious identities and facilitates
     analyses of change over time. It automatically handels combination of
