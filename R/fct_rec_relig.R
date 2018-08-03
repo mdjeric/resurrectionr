@@ -144,13 +144,13 @@ fct_rec_relig <- function(religion, denomination, other)  {
   co_relig <- c_r[co_r_num]
   co_other <- c_o[co_o_num]
   DF$co_true <- (DF$relig %in% co_relig) | (DF$other %in% co_other)
-  DF$rv[DF$co_true] <- "Catholic or Orthodox"
+  DF$rv[DF$co_true] <- "Catholic and Orthodox"
 
   # Jews ----------------------------------------------------------
   jw_r_num <- c(3)
   jw_relig <- c_r[jw_r_num]
   DF$jw_true <- DF$relig %in% jw_relig
-  DF$rv[DF$jw_true] <- "Jewish"
+  DF$rv[DF$jw_true] <- "Jew"
 
   # Other religions -----------------------------------------------
   DF$or_nonsp <- (DF$relig == c_r[5]) & !(DF$sp_pent |
@@ -168,13 +168,13 @@ fct_rec_relig <- function(religion, denomination, other)  {
                  (DF$other %in% or_other) |
                   DF$or_nonsp
                  )
-  DF$rv[DF$or_true] <- "Other religion"
+  DF$rv[DF$or_true] <- "Other religions"
 
   # No religious identification -----------------------------------
   nr_r_num <- c(4)
   nr_relig <- c_r[nr_r_num]
   DF$nr_true <- DF$relig %in% nr_relig
-  DF$rv[DF$nr_true] <- "None"
+  DF$rv[DF$nr_true] <- "No identification"
 
   # Missing values ------------------------------------------------
   # No Answer
