@@ -1,6 +1,6 @@
 # MIT License
 
-Copyright (c) 2018 Milos Djeric, Darren Sherkat, Derek Lehman
+Copyright (c) 2018 Milos Djeric, Derek Lehman, Darren Sherkat
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

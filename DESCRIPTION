@@ -3,9 +3,9 @@ Type: Package
 Title: Recoding of Religion in General Social Survey
 Version: 0.0.0.9000
 Authors@R: as.person(c(
-    "Milos Djeric <milos.djeric@gmail.com> [aut, cre]", 
+    "Milos Djeric <milos.djeric@gmail.com> [aut, cre]",
+    "Derek Lehman <dlehman@siu.edu> [aut]"
     "Darren Sherkat <sherkat@siu.edu> [aut]",
-    "Derek Lehman <derekleheman@siu.edu> [aut]"
   ))
 Description: Function that recodes GSS family of variables for religious
     identification (base variables: relig, denom, and other; for
