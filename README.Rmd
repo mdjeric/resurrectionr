@@ -99,23 +99,6 @@ gshrt$religion2 <- recode_religion(gshrt$relig, gshrt$d_num, gshrt$o_num_char,
 FALSE %in% (gshrt$religion2 == gshrt$religion)
 ```
 
-## Bugs
-
-There are minor differences, however, when all missing values are imported from SPSS. For example,
-if all missing values are treated equaliy, certain groups might appear `NA`, as seen in this example:
-
-```{r bug-importing-na}
-gss$religion2 <- recode_religion(gss14_n$relig, gss14_n$denom, gss14_n$other, frequencies = FALSE)
-unique(gss[,c("religion2", "religion")])
-
-# total number of cases in 2014 GSS:
-gss[is.na(gss$religion2) & gss$religion == "Christian, no group given",]
-# These are with different types of missing values on denom and other
-# should be corrected soon.
-
-```
-
-
 ## Further work
 Three more things are planned to be included in this package:    
 

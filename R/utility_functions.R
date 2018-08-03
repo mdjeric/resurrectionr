@@ -54,7 +54,7 @@ transform_rdo <- function(vrb, type)  {
   if (TRUE %in% (vrb_lvls %in% cdbk_num))  {
     # vrb is numeric
     # which values are not according to codebook
-    miss_punch <- !(vrb_lvls %in% c(cdbk_num, NA, "<NA>"))
+    miss_punch <- !(vrb_lvls %in% c(cdbk_num, NA))
     if (TRUE %in% miss_punch)  {
       # there are values which are not in codebook or NA
       return(list(error = TRUE, name = type, type = vrb_lvls[miss_punch][1]))
@@ -64,17 +64,13 @@ transform_rdo <- function(vrb, type)  {
       vrb[vrb == "0"] <- "1000"
       vrb <- cdbk[as.numeric(vrb)]
       # are any NA, which have to be changed?
-      if ((NA %in% vrb) | ("<NA>" %in% vrb))  {
-        vrb[vrb == "<NA>"] <- "NA"
-        if (type == "relig") {          # THIS IS A CURRENT WORKARDOUN
-          vrb[is.na(vrb)] <- "NA"       # MAYBE NOT IDAEL
-          }
-          else vrb[is.na(vrb)] <- "IAP"
+      if (NA %in% vrb)  {
+        vrb[is.na(vrb)] <- "NA"
         message("* `", type, "` recoded from punches to labels;",
                 " and 'NA' introduced.")
-      } else {
+        } else {
         message("* `", type, "` recoded from punches to labels.")
-      }
+        }
       vrb <- as.factor(vrb)
     }
   } else {
@@ -82,15 +78,14 @@ transform_rdo <- function(vrb, type)  {
     if (TRUE %in% (vrb_lvls %in% cdbk_chr))  {
       # variable is character (or factor)
       # which values are not according to codebook or NA
-      miss_lbl <- !(vrb_lvls %in% c(cdbk_chr, NA, "<NA>"))
+      miss_lbl <- !(vrb_lvls %in% c(cdbk_chr, NA))
       if (TRUE %in% miss_lbl)  {
         # there are values which are not in codebook
         return(list(error = TRUE, name = type, type = vrb_lvls[miss_lbl][1]))
       } else {
         # all values good
         # are any NA, which have to be changed?
-        if ((NA %in% vrb) | ("<NA>" %in% vrb))  {
-          vrb[vrb == "<NA>"] <- "NA"
+        if (NA %in% vrb)  {
           vrb[is.na(vrb)] <- "NA"
           message("* For `", type, "` 'NA' introduced.")
         }
