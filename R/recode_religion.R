@@ -21,6 +21,7 @@
 #' variable but uses them correctly in the recoding. Through passed
 #' arguments, one can:
 #' \enumerate{
+#'   \item Return longer version, of 12 religious identifications.
 #'   \item Add identifications from schema that are not present in
 #'   sample as empty levels.
 #'   \item Suppress printing of the frequencies of newly recoded variable.
@@ -33,12 +34,11 @@
 #' treatment of missing values, are provided as messages that can be
 #' suppressed.
 #'
-#' Future behavior will provide recoding to 7 levels. More details can be
-#' found on \href{https://github.mdjeric}{github.mdjeric}.
+#' More details can be found on \href{https://github.mdjeric}{github.mdjeric}.
 #'
 #' @param relig,denom,other Numerical, character, or factor, all of same
 #' length and with coresponding punches or labels in codebook.
-#' @param n_groups Number 12, i.e. number of new religious identifications.
+#' @param n_groups Number, 7 (default) or 12 of new religious identifications.
 #' @param add_missing_levels Logical, to include as empty levels religious
 #' identifications that may not be present in specific sample, but are
 #' part of recoding schema.
@@ -54,7 +54,7 @@
 #' "Not answered/Don't know" when missing values are not
 #' declared as punches or labels in initial variables but passed on as
 #' \code{NA} (function gives message and where \code{NAs} are lcoated).
-#' Default is to have factor with 12 descriptive levels, but function can
+#' Default is to have factor with 7 descriptive levels, but function can
 #' also return numerical vector. Default behavior returns only present
 #' values, but can be made to add additional empty levels if \code{TRUE}
 #' is passed to \code{add_missing_levels}. Function also \strong{prints}
@@ -68,6 +68,9 @@
 #' # When all variables are factor
 #' gss14_f$religion <- recode_religion(gss14_f$relig, gss14_f$denom,
 #'                                     gss14_f$other, frequencies = FALSE)
+#' # Twelve groups
+#' gss14_f$religion <- recode_religion(gss14_f$relig, gss14_f$denom,
+#'                                     gss14_f$other, n_groups = 12)
 #'
 #' # When all variables are numeric
 #' gss14_n$religion <- recode_religion(gss14_n$relig, gss14_n$denom,
@@ -78,7 +81,7 @@
 #' religion <- recode_religion(gss14_f$relig, gss14_n$denom,
 #'                             as.character(gss14_f$other))
 #' @export
-recode_religion <- function(relig, denom, other, n_groups = 12,
+recode_religion <- function(relig, denom, other, n_groups = 7,
                             add_missing_levels = FALSE, frequencies = TRUE,
                             print_key = FALSE, return_num = FALSE)  {
 
@@ -98,8 +101,8 @@ recode_religion <- function(relig, denom, other, n_groups = 12,
     arg_err <- add_error(arg_err, "other",
                          "vector (numeric or character) or factor")
 
-  if (as.character(n_groups) != "12")
-    arg_err <- add_error(arg_err, "n_groups", "12")
+  if (!(as.character(n_groups) %in% c("7", "12")))
+    arg_err <- add_error(arg_err, "n_groups", "7 or 12")
 
   if (!is.logical(add_missing_levels))
     arg_err <- add_error(arg_err, "add_missing_levels", "logical")
@@ -177,26 +180,37 @@ recode_religion <- function(relig, denom, other, n_groups = 12,
     religion[religion == "No answer"] <- "Don't know/No answer"
   }
 
+# Reduce groups if needed -------------------------------------------------
+  all_levels <- c("Sectarian Protestant", "Baptist",
+                  "Moderate Protestant", "Christian, no group given", "Lutheran",
+                  "Liberal Protestant", "Episcopalian",
+                  "Catholic and Orthodox",
+                  "Other religions", "Jew",
+                  "Mormon",
+                  "No identification"
+                  )
+
+  if (as.character(n_groups) == "7")  {
+
+    names(all_levels) <- c(1, 11, 2, 21, 22, 3, 31, 4, 5, 51, 6, 7)
+
+    religion[religion %in% all_levels[c("1", "11")]] <- all_levels["1"]
+    religion[religion %in% all_levels[c("2", "21", "22")]] <- all_levels["2"]
+    religion[religion %in% all_levels[c("3", "31")]] <- all_levels["3"]
+    religion[religion %in% all_levels[c("5", "51")]] <- all_levels["5"]
+
+    all_levels <- unname(all_levels[as.character(c(1:7))])
+
+  }
+
   religion <- as.factor(religion)
 
 # Add missing levels ------------------------------------------------------
-
-  all_levels <- c("Baptist", "Catholic or Orthodox", "Liberal Protestant",
-                  "Christian, no group given", "Don't know", "No answer",
-                  "Jewish",  "Episcopalian", "Mormon", "Lutheran", "None",
-                  "Moderate Protestant")
 
   if (add_missing_levels)  {
     missing_levels <- !(all_levels %in% levels(religion))
     if (TRUE %in% missing_levels)
       levels(religion) <- c(levels(religion), all_levels[missing_levels])
-  }
-
-# Reduce groups if needed -------------------------------------------------
-
-  if (n_groups == 7)  {
-    # find code how to merge it
-    # aslo, confirm that it can be changed in arguments
   }
 
 
