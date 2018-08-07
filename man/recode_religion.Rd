@@ -4,7 +4,7 @@
 \alias{recode_religion}
 \title{Recode Religion from GSS.}
 \usage{
-recode_religion(relig, denom, other, n_groups = 12,
+recode_religion(relig, denom, other, n_groups = 7,
   add_missing_levels = FALSE, frequencies = TRUE, print_key = FALSE,
   return_num = FALSE)
 }
@@ -12,7 +12,7 @@ recode_religion(relig, denom, other, n_groups = 12,
 \item{relig, denom, other}{Numerical, character, or factor, all of same
 length and with coresponding punches or labels in codebook.}
 
-\item{n_groups}{Number 12, i.e. number of new religious identifications.}
+\item{n_groups}{Number, 7 (default) or 12 of new religious identifications.}
 
 \item{add_missing_levels}{Logical, to include as empty levels religious
 identifications that may not be present in specific sample, but are
@@ -33,7 +33,7 @@ factor levels "Not answered" and "Don't know", or combined
 "Not answered/Don't know" when missing values are not
 declared as punches or labels in initial variables but passed on as
 \code{NA} (function gives message and where \code{NAs} are lcoated).
-Default is to have factor with 12 descriptive levels, but function can
+Default is to have factor with 7 descriptive levels, but function can
 also return numerical vector. Default behavior returns only present
 values, but can be made to add additional empty levels if \code{TRUE}
 is passed to \code{add_missing_levels}. Function also \strong{prints}
@@ -64,6 +64,7 @@ provides detail recoding; (2) if \code{NA}, lumps them together in final
 variable but uses them correctly in the recoding. Through passed
 arguments, one can:
 \enumerate{
+  \item Return longer version, of 12 religious identifications.
   \item Add identifications from schema that are not present in
   sample as empty levels.
   \item Suppress printing of the frequencies of newly recoded variable.
@@ -76,8 +77,7 @@ is not requested as return value, all other information, such as
 treatment of missing values, are provided as messages that can be
 suppressed.
 
-Future behavior will provide recoding to 7 levels. More details can be
-found on \href{https://github.mdjeric}{github.mdjeric}.
+More details can be found on \href{https://github.mdjeric}{github.mdjeric}.
 }
 \examples{
 library(resurrectionr)
@@ -85,6 +85,9 @@ library(resurrectionr)
 # When all variables are factor
 gss14_f$religion <- recode_religion(gss14_f$relig, gss14_f$denom,
                                     gss14_f$other, frequencies = FALSE)
+# Twelve groups
+gss14_f$religion <- recode_religion(gss14_f$relig, gss14_f$denom,
+                                    gss14_f$other, n_groups = 12)
 
 # When all variables are numeric
 gss14_n$religion <- recode_religion(gss14_n$relig, gss14_n$denom,

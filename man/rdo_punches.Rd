@@ -20,8 +20,9 @@ Function that returns vector with punches and
 labels for religious identification family of variables.
 Since, many punches are skipped, especially in \code{other},
 it has a lot of \code{NA}, while punches for different
-missing values are described, e.g. \code{'IAP'} or
-\code{'NA'}. It's uused in \code{\link{fct_rec_relig}}
+missing values are described, e.g. \code{'NA'}. Does not return
+punch for \code{'IAP'}, since it is 0. It's used in
+\code{\link{fct_rec_relig}}
 }
 \examples{
 relig_punches <- rdo_punches("relig")
