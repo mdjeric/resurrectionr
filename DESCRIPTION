@@ -2,11 +2,13 @@ Package: resurrectionr
 Type: Package
 Title: Recoding of Religion in General Social Survey
 Version: 0.0.0.9000
-Authors@R: as.person(c(
-    "Milos Djeric <milos.djeric@gmail.com> [aut, cre]",
-    "Derek Lehman <dlehman@siu.edu> [aut]",
-    "Darren Sherkat <sherkat@siu.edu> [aut]"
-  ))
+Authors@R: c(
+    person("Milos", "Djeric", , "milos.djeric@gmail.com", role = c("aut", "cre")),
+    person("Derek", "Lehman", , "dlehman@siu.edu", role = c("aut"),
+           comment = c(ORCID = "0000-0003-3585-2775")
+    ),
+    person("Darren", "Sherkat", , "sherkat@siu.edu", role = c("aut"))
+    )
 Description: Function that recodes GSS family of variables for religious
     identification (base variables: relig, denom, and other; for
     respondent, spouse, parents, etc.) into a 7 (and 12) level sociological
